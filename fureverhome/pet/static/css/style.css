@@ -1,0 +1,229 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #4A4A4A;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #4A90E2;
+    color: #FFFFFF;
+    /*padding: 20px 0;*/
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    float: inline-end;
+    max-width: 150px;
+    bottom: 0px;
+
+}
+
+.header .logo a img {
+    position: relative;
+    float: inline-end;
+    max-width: 150px;
+    bottom: 0px;
+}
+
+.header .nav a, .header .nav button {
+    color: #FFFFFF;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.header .nav form {
+    float: left;
+}
+
+.header .nav .btn-primary {
+    background-color: #F5A623;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.header .nav .btn-primary:hover {
+    background-color: #FF8A80;
+}
+
+.pets-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.pet-card {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+}
+
+.pet-card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.footer {
+    background-color: #F7F7F7;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-nav a {
+    color: #4A4A4A;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+
+.card {
+    border-radius: 10px;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+    margin: auto;
+}
+
+.form-signin .form-control {
+    margin-bottom: 10px;
+}
+
+
+
+.drop-shadow {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #F5A623;
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color: #FF8A80;
+}
+
+.btn-secondary {
+    background-color: #7ED321;
+    color: #FFFFFF;
+}
+
+.btn-secondary:hover {
+    background-color: #4A90E2;
+}
+
+.search-bar {
+    background-color: #E5F7FF;
+    padding: 20px 0;
+}
+
+.search-bar form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input, .search-bar select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+}
+
+.search-bar .btn-primary {
+    margin-left: 10px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+form .form-group {
+    margin: 10px;
+}
+
+form .form-control {
+    width: 200px;
+}
+
+form .btn-primary {
+    margin: 10px;
+}
+
+.list-group-item img {
+    max-width: 100px;
+    height: auto;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.list-group-item {
+    display: flex;
+    align-items: center;
+}
+
+form .form-row {
+    margin-bottom: 20px;
+}
+.form-section {
+    margin-bottom: 20px;
+}
+.form-section h3 {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}

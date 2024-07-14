@@ -1,0 +1,71 @@
+{% extends 'base/layout.html' %}
+
+{% block title_tagline %}Search{% endblock title_tagline %}
+{% load static %}
+{% block content %}
+<section class="container mt-5">
+    <h2 class="text-center">Find Your New Best Friend</h2>
+    <form method="GET" action="{% url 'pet_search' %}" class="form-inline justify-content-center">
+        <div class="form-group mx-2">
+            <input type="text" name="location" placeholder="Location" value="{{ request.GET.location }}" class="form-control">
+        </div>
+        <div class="form-group mx-2">
+            <select name="pet_type" class="form-control">
+                <option value="">Pet Type</option>
+                {% for type in pet_types %}
+                <option value="{{ type.id }}" {% if request.GET.pet_type == type.id|stringformat:"s" %}selected{% endif %}>{{ type.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group mx-2">
+            <select name="breed" class="form-control">
+                <option value="">Breed</option>
+                {% for breed in breeds %}
+                <option value="{{ breed.id }}" {% if request.GET.breed == breed.id|stringformat:"s" %}selected{% endif %}>{{ breed.name }} ({{ breed.pet_type.name }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group mx-2">
+            <select name="age" class="form-control">
+                <option value="">Age</option>
+                <option value="puppy" {% if request.GET.age == "puppy" %}selected{% endif %}>Puppy</option>
+                <option value="adult" {% if request.GET.age == "adult" %}selected{% endif %}>Adult</option>
+                <option value="senior" {% if request.GET.age == "senior" %}selected{% endif %}>Senior</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mx-2">Search</button>
+    </form>
+</section>
+<section class="container">
+    <h2 class="text-center mb-4">Available Pets</h2>
+    {% if pets %}
+        <div class="row">
+            {% for pet in pets %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        {% if pet.photos.all %}
+                            <img src="{% static 'img/pets/' %}{{ pet.pet_type }}/{{ pet.photos.first.url }}" class="card-img-top" alt="{{ pet.name }}">
+                        {% else %}
+                            <img src="{% static 'img/pets/' %}{{ pet.pet_type }}/default.png" class="card-img-top" alt="{{ pet.name }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ pet.name }}</h5>
+                            <p class="card-text">{{ pet.breed.name }} - {{ pet.age }} years old</p>
+                            <p class="card-text"><small class="text-muted">{{ pet.shelter.location }}</small></p>
+                        </div>
+                        <div class="card-footer">
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    <a href="{% url 'pet_show' pet.id %}">See Details</a>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center">No pets found</p>
+    {% endif %}
+</section>
+{% endblock content %}

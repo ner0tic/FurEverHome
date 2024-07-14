@@ -1,0 +1,22 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+
+{% block title_tagline %}{{ pet.name }}{% endblock title_tagline %}
+
+{% block content %}
+    <section class="content">
+        <div class="container">
+            <h2>{{ pet.name }}</h2>
+            <div class="pet-detail">
+                <img src="{{ pet.image_url }}" alt="{{ pet.name }}">
+                <div class="pet-info">
+                    <p><strong>Age:</strong> {{ pet.age }}</p>
+                    <p><strong>Breed:</strong> {{ pet.breed }}</p>
+                    <p><strong>Description:</strong> {{ pet.description }}</p>
+                    <p><strong>Health Status:</strong> {{ pet.health_status }}</p>
+                    <button class="btn btn-primary">Apply for Adoption</button>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

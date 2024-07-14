@@ -1,0 +1,68 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+
+{% block title_text %}FurEver Home - Find Your Furry Friend{% endblock title_text %}
+
+{% block stylesheets %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
+{% endblock stylesheets %}
+
+{% block content %}
+    <section class="hero">
+        <div class="container">
+            <h2 class="drop-shadow">Find Your Furry Friend Today</h2>
+            <p class="drop-shadow">Connecting you with pets looking for a loving home.</p>
+            <button class="btn btn-primary">Adopt Now</button>
+            <button class="btn btn-secondary">Find a Shelter</button>
+        </div>
+    </section>
+
+    <section class="search-bar">
+        <div class="container">
+            <form method="GET" action="{% url 'pet_search' %}">
+                <input type="text" name="location" placeholder="Location" value="{{ request.GET.location }}">
+                <select name="pet_type">
+                    <option value="">Pet Type</option>
+                    {% for type in pet_types %}
+                    <option value="{{ type.id }}" {% if request.GET.pet_type == type.id|stringformat:"s" %}selected{% endif %}>{{ type.name }}</option>
+                    {% endfor %}
+                </select>
+                <select name="breed">
+                    <option value="">Breed</option>
+                    {% for breed in breeds %}
+                    <option value="{{ breed.id }}" {% if request.GET.breed == breed.id|stringformat:"s" %}selected{% endif %}>{{ breed.name }} ({{ breed.pet_type.name }})</option>
+                    {% endfor %}
+                </select>
+                <select name="age">
+                    <option value="">Age</option>
+                    <option value="puppy" {% if request.GET.age == "puppy" %}selected{% endif %}>Puppy</option>
+                    <option value="adult" {% if request.GET.age == "adult" %}selected{% endif %}>Adult</option>
+                    <option value="senior" {% if request.GET.age == "senior" %}selected{% endif %}>Senior</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="featured-pets">
+        <div class="container">
+            <h3>Featured Pets</h3>
+            <div class="pets-grid">
+                <div class="pet-card">
+                    <img src="{% static 'img/landing/dog.png' %}" alt="Dog" />
+                    <h4>Pet Name</h4>
+                    <p>Age: 2 years</p>
+                    <p>Breed: Labrador</p>
+                </div>
+                <div class="pet-card">
+                    <img src="{% static 'img/landing/cat.png' %}" alt="Cat" />
+                    <h4>Pet Name</h4>
+                    <p>Age: 1 year</p>
+                    <p>Breed: Siamese</p>
+                </div>
+                <!-- Add more pet cards as needed -->
+            </div>
+        </div>
+    </section>
+{% endblock content %}

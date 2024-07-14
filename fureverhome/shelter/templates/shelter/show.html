@@ -1,0 +1,33 @@
+{% extends "base/layout.html" %}
+{% load static %}
+
+{% block content %}
+<div class="shelter-detail">
+    <h2>{{ shelter.name }}</h2>
+    <p>Location: {{ shelter.location }}</p>
+    <p>Description: {{ shelter.description }}</p>
+    <h3>Available Pets</h3>
+    <div class="pets-grid">
+        {% if shelter.pets.all %}
+            {% for pet in shelter.pets.all %}
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    {% if pet.photos.all %}
+                        <img src="{% static 'img/pets/' %}{{ pet.pet_type }}/{{ pet.photos.first.url }}" class="card-img-top" alt="{{ pet.name }}">
+                    {% else %}
+                        <img src="{% static 'img/pets/' %}{{ pet.pet_type }}/default.png" class="card-img-top" alt="{{ pet.name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ pet.name }}</h5>
+                        <p class="card-text">{{ pet.breed.name }} - {{ pet.age }} years old</p>
+                    
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <div class="pet-card">No available pets found.</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

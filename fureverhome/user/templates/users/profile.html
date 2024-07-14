@@ -1,0 +1,17 @@
+{% extends "base/layout.html" %}
+
+{% block title_tagline %}{{user}}{% endblock title_tagline %}
+
+{% block content %}
+<div class="profile">
+    <h1>{{ user.username }}'s Profile</h1>
+    <p>Email: {{ user.email }}</p>
+    <h3>Adoption History</h3>
+    <ul>
+        {% for adoption in user.adoptions.all %}
+            <li>{{ adoption.pet.name }} - {{ adoption.status }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'account_profile_edit' %}" class="btn btn-secondary">Edit Profile</a>
+</div>
+{% endblock content %}

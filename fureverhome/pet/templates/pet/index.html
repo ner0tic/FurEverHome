@@ -1,0 +1,24 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+
+{% block title_tagline %}Available Pets{% endblock title_tagline %}
+
+{% block content %}
+<section class="content">
+    <div class="container">
+        <h2>Available Pets</h2>
+        <div class="pets-grid">
+            <!-- Loop through pets in the view context -->
+            {% for pet in pets %}
+            <div class="pet-card">
+                <img src="{{ pet.image_url }}" alt="{{ pet.name }}">
+                <h4>{{ pet.name }}</h4>
+                <p>Age: {{ pet.age }}</p>
+                <p>Breed: {{ pet.breed }}</p>
+                <a href="{% url 'pet_show' pet.id %}" class="btn btn-secondary">View Details</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
