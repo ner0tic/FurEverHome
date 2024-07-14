@@ -14,6 +14,6 @@ router.register(r'shelters', ShelterViewSet)
 
 urlpatterns = [
     path("", shelter_index, name="shelter_index"),
-    path("/<int:sid>/", shelter_show, name="shelter_show"),
+    path("<int:sid>/", shelter_show, name="shelter_show"),
     path(r'', include(router.urls)),
 ]

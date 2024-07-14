@@ -7,7 +7,8 @@ from django.db import models
 class User(AbstractUser):
     ROLE_CHOICES = [
         ("Admin", "Admin"),
-        ("ShelterStaff", "ShelterStaff"),
+        ("ShelterStaff", "Shelter Staff"),
+        ("ShelterAdmin", "Shelter Admin"),
         ("Adopter", "Adopter"),
     ]
     username = models.CharField(max_length=15, unique=True)
@@ -30,7 +31,7 @@ class User(AbstractUser):
     )
 
     def __str__(self):
-        return self.username
+        return f"{self.username}"
 
 
 class Profile(models.Model):
@@ -39,4 +40,4 @@ class Profile(models.Model):
     location = models.CharField(max_length=150, blank=True, null=True)
 
     def __str__(self):
-        return self.user.username
+        return f"{self.user.username}"
