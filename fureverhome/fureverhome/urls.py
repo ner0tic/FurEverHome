@@ -49,5 +49,34 @@ urlpatterns = [
         TemplateView.as_view(template_name="base/contact.html"),
         name="contact",
     ),
+    path("signup/", SignUpView.as_view(template_name="registration/signup.html"), name="signup"),
+    path(
+        "login/",
+        LoginView.as_view(template_name="registration/login.html"),
+        name="login",
+    ),
+    path("logout/", LogoutView.as_view(), name="logout"),
+    path("change-password/", PasswordChangeView.as_view(), name="change_password"),
+    path(
+        "change-password/done/",
+        PasswordChangeDoneView.as_view(),
+        name="password_change_done",
+    ),
+    path("password-reset/", PasswordResetView.as_view(), name="password_reset"),
+    path(
+        "password-reset/done/",
+        PasswordResetDoneView.as_view(),
+        name="password_reset_done",
+    ),
+    path(
+        "reset/<uidb64>/<token>/",
+        PasswordResetConfirmView.as_view(),
+        name="password_reset_confirm",
+    ),
+    path(
+        "reset/done/",
+        PasswordResetCompleteView.as_view(),
+        name="password_reset_complete",
+    ),
     path("", include(router.urls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
